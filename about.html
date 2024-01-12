@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            transition: background-color 0.5s;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        header a:hover {
+            color: #ffcc00;
+        }
+        #main-content {
+          background-color: #f0f0f0; 
+          padding: 20px;
+          padding-top: 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="#" class="menu-item">Services</a>
+        <a href="#" class="menu-item">Contact</a>
+    </header>
+
+    <div id="main-content" >
+      <h3>This is the About Us Page</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo ut velit semper aliquam. Suspendisse potenti. Proin vehicula dui vel lectus ullamcorper, vel tristique elit ullamcorper. Curabitur vel quam sed arcu sodales cursus vel nec justo. Nulla facilisi. Integer lacinia libero nec odio euismod, vel ultrices libero feugiat.</p>
+    </div>
+  
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var header = document.getElementById("main-header");
+
+            // Change background color on scroll
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = "#555";
+                } else {
+                    header.style.backgroundColor = "#333";
+                }
+            });
+
+            // Change background color on hover
+            var menuItems = document.querySelectorAll(".menu-item");
+            menuItems.forEach(function (menuItem) {
+                menuItem.addEventListener("mouseover", function () {
+                    header.style.backgroundColor = "#444";
+                });
+
+                menuItem.addEventListener("mouseout", function () {
+                    // Change back to the original color on mouse out
+                    if (window.scrollY > 50) {
+                        header.style.backgroundColor = "#555";
+                    } else {
+                        header.style.backgroundColor = "#333";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
